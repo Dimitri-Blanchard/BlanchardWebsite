@@ -9,20 +9,89 @@ body {
 
 header {
     background: rgba(0, 0, 0, 0.8);
-    padding: 10px 0;
+    padding: 10px 20px;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
 }
 
-nav ul {
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+/* Menu toggle (Burger) */
+nav .menu-toggle {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    z-index: 2000;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+nav .menu-toggle .bar {
+    height: 4px;
+    width: 30px;
+    background-color: white;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Changement d'animation quand le menu est ouvert */
+nav .menu-toggle.open .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+nav .menu-toggle.open .bar2 {
+    opacity: 0;
+}
+
+nav .menu-toggle.open .bar3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Style du menu lorsqu'il est ouvert */
+nav ul.showing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 60px; /* Positionner sous la barre de navigation */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px 0;
+    z-index: 100;
+    animation: slideDown 0.5s ease-in-out;
+}
+
+/* Animation pour faire glisser le menu */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Style des éléments de la liste */
+nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -40,6 +109,7 @@ nav ul li a:hover {
     color: #ff4081;
 }
 
+/* Section et animations */
 .section {
     padding: 100px 20px 60px;
     min-height: 100vh;
@@ -94,7 +164,7 @@ footer p {
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     text-align: left;
     animation: projectFadeIn 2s ease-in-out;
@@ -129,7 +199,7 @@ footer p {
 .contact-item {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -138,7 +208,7 @@ footer p {
 
 .contact-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .contact-item a {
@@ -158,4 +228,47 @@ footer p {
 
 .contact-item span {
     display: block;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    nav .menu-toggle {
+        display: flex;
+    }
+
+    nav ul.showing {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 1.5em;
+    }
+
+    h1, h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .project {
+        padding: 15px;
+    }
+
+    .project h3 {
+        font-size: 1.5em;
+    }
+
+    .contact-item {
+        width: 80px;
+    }
 }
