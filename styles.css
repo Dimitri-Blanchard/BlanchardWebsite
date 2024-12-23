@@ -29,7 +29,7 @@ header .logo {
 
 /* Menu toggle (Burger) */
 nav .menu-toggle {
-    display: flex;
+    display: none; /* Masquer par défaut sur les grands écrans */
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -88,7 +88,7 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
+    display: flex; /* Afficher par défaut sur les grands écrans */
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -232,26 +232,32 @@ footer p {
 
 /* Responsiveness */
 @media (max-width: 768px) {
+    /* Masquer le menu classique sur les petits écrans */
     nav ul {
         display: none;
     }
 
+    /* Afficher le menu burger sur les petits écrans */
     nav .menu-toggle {
         display: flex;
     }
 
+    /* Style du menu burger lorsqu'il est ouvert */
     nav ul.showing {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px 0;
+        z-index: 100;
+        animation: slideDown 0.5s ease-in-out;
     }
 
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    nav ul li a {
-        font-size: 1.5em;
-    }
-
+    /* Ajustements pour les titres et textes */
     h1, h2 {
         font-size: 2em;
     }
